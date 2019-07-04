@@ -1,0 +1,24 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "Friend Finder matches the user to others based on their answers to multiple questions.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avinashsinghdhillon/FriendFinder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avinashsinghdhillon/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/avinashsinghdhillon/FriendFinder#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
