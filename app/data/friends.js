@@ -47,4 +47,6 @@ var individuals = [
             2
           ]
     }
-]
+];
+
+module.exports = individuals;
