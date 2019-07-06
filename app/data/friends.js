@@ -4,47 +4,47 @@ var individuals = [
         "photo":"https://xyz.jpg",
         "scores":[
             5,
-            1,
-            4,
-            4,
-            5,
-            1,
-            2,
-            5,
-            4,
-            1
-          ]
-    },
-    {
-        "name":"John",
-        "photo":"https://abc.jpg",
-        "scores":[
-            1,
-            3,
-            2,
-            2,
             5,
             5,
-            1,
-            1,
+            5,
+            5,
+            5,
+            5,
+            5,
             5,
             5
           ]
     },
     {
-        "name":"Susan",
+        "name":"Bolton",
+        "photo":"https://abc.jpg",
+        "scores":[
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+    },
+    {
+        "name":"Charlie",
         "photo":"https://xyz.jpg",
         "scores":[
-            2,
             1,
-            2,
-            4,
             1,
-            5,
-            5,
-            3,
-            4,
-            2
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
           ]
     }
 ];
