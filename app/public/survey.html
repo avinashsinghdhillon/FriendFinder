@@ -298,7 +298,6 @@
                     valid = false;
                 }
             }
-            console.log("Valid: " + valid);
             if(!valid){
                 //pop a modal to say all fields are required/////////////////////////////////////////////
             }
@@ -326,18 +325,29 @@
                     ]
                 };
             }
-            addSurveyToData(newSurvey);
+            getBestMatch(newSurvey);
+
+            //addSurveyToData(newSurvey);
         });
         
         function addSurveyToData(newIndividual){
             $.post("/api/individuals", newIndividual)
-               .then(function (data) {
-                   if (data.message === true) {
-                       console.log("Survey Added ", data);
+               .then(function (data, status, response) {
+                   if (status === "success") {
+                       console.log("Posted Successfully." + data);
                    }
             });
             //add the get request here to get back the result of the survey(closest  match)///////////////////////////////
         }
+
+        function getBestMatch(newIndividual){
+            debugger;
+            $.get("/api/match", newIndividual , function(data){
+                console.log("Match Data: " + data);
+            });
+
+        }
+
     </script>
 </body>
 </html>

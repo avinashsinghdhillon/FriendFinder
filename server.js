@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 console.log(htmlRoutes.home);
-app.get("/", function(request, response){
-    response.sendfile(path.join(__dirname, htmlRoutes.home))
+app.get("/", function(req, res){
+    res.sendfile(path.join(__dirname, htmlRoutes.home));
 });
 
 var surveyRoute = app.get("/survey", function(req, res) {
@@ -27,25 +27,31 @@ var surveyRoute = app.get("/survey", function(req, res) {
 });
 
 // Displays all individuals
-console.log(apiRoutes.individuals)
 var apiIndividuals =  app.get(apiRoutes.individuals, function(req, res) {
 return res.json(individuals);
+});
+
+//Displays best match for newFriend
+var bestMatch = app.get("/api/match", function(req, res){
+
+     console.log("body: " + req.body);
+    // console.log("req: " + req);
+    var newUser = findMatch(req.body);
+    return res.json(newUser);
 });
 
 
 app.post(apiRoutes.individuals, function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
-    debugger;
     var newFriend = req.body;
     individuals.push(newFriend);
     res.json(newFriend);
     newIndividual = newFriend;
-    findMatch();
 });
 
-function findMatch(){
-    debugger;
+function findMatch(newUser){
+    console.log("newUser: " + newUser);
     var bestMatchScore = 0;
     var bestMatchIndex = 0;
     //loop through all the individuals except the NEW one in the end to compare survey answers
@@ -53,7 +59,6 @@ function findMatch(){
         var currentMatchScore = 0;
         for(var j = 0; j < 10; j++){
             currentMatchScore += Math.abs(individuals[i].scores[j] - newIndividual.scores[j]);
-            console.log(i, j, bestMatchScore,  currentMatchScore);
         }
         if(i === 0 || currentMatchScore < bestMatchScore){
             bestMatchScore = currentMatchScore;
@@ -61,15 +66,12 @@ function findMatch(){
         }
     }
     returnMatch = individuals[bestMatchIndex];
-    console.log("bestMatchScore: " + bestMatchIndex);
     console.log(returnMatch);
+    return returnMatch;
 }
-
 
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
 console.log("App listening on PORT " + PORT);
 });
-
-
