@@ -278,13 +278,14 @@
             <button id="submitSurvey" type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
         </div>
         <footer style="margin-top: 3rem; margin-bottom: 3rem">
-            <a href="/api/individuals">FF-API</a> | Link to GitHub Repo
+            <a href="/api/individuals">Friend Finder - API</a>  |   <a href="https://github.com/avinashsinghdhillon/FriendFinder">Link to GitHub Repo</a>
         </footer>
     </div>
     <!-- Modal goes here -->
     
     <script>
-        //write the AJAX to 1.) POST new survey and then 2.) GET closest match from the server and then pop modal
+        //write the AJAX to 1.) POST new survey and then 
+        //2.) GET closest match from the server and then pop modal
 
         function checkSurvey(){
             //validate the survey
@@ -303,7 +304,6 @@
             }
             return valid
         }
-
 
         $("#submitSurvey").on("click", function(){
             if(checkSurvey()){
@@ -325,29 +325,18 @@
                     ]
                 };
             }
-            getBestMatch(newSurvey);
-
-            //addSurveyToData(newSurvey);
+            addSurveyToData(newSurvey);
         });
         
         function addSurveyToData(newIndividual){
             $.post("/api/individuals", newIndividual)
                .then(function (data, status, response) {
+                   debugger;
                    if (status === "success") {
-                       console.log("Posted Successfully." + data);
+                       console.log("Best match: " + data);
                    }
             });
-            //add the get request here to get back the result of the survey(closest  match)///////////////////////////////
         }
-
-        function getBestMatch(newIndividual){
-            debugger;
-            $.get("/api/match", newIndividual , function(data){
-                console.log("Match Data: " + data);
-            });
-
-        }
-
     </script>
 </body>
 </html>
