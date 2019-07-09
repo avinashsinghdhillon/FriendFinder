@@ -1,7 +1,7 @@
 var individuals = [
     {
-        "name":"Ahmed",
-        "photo":"https://xyz.jpg",
+        "name":"Paul",
+        "photo":"https://www-ssrl.slac.stanford.edu/wekergroup/sites/default/files/images/parthapaul.jpeg",
         "scores":[
             5,
             5,
@@ -16,8 +16,8 @@ var individuals = [
           ]
     },
     {
-        "name":"Bolton",
-        "photo":"https://abc.jpg",
+        "name":"Yang",
+        "photo":"https://www-ssrl.slac.stanford.edu/wekergroup/sites/default/files/images/yang_ren.jpeg",
         "scores":[
             3,
             3,
@@ -32,8 +32,8 @@ var individuals = [
           ]
     },
     {
-        "name":"Charlie",
-        "photo":"https://xyz.jpg",
+        "name":"Anna",
+        "photo":"https://www-ssrl.slac.stanford.edu/wekergroup/sites/default/files/styles/medium/public/images/anna_head.jpg?itok=J-q65srW",
         "scores":[
             1,
             1,

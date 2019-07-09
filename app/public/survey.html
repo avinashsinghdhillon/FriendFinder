@@ -282,11 +282,28 @@
         </footer>
     </div>
     <!-- Modal goes here -->
-    
+    <div class="modal fade" id="bestMatchModal" show="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 id="exampleModalCenterTitle"><strong>Best Match</strong></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <h3 id="matchName">Name</h3>
+                <img src="" alt="" id="matchImage" srcset="">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <script>
-        //write the AJAX to 1.) POST new survey and then 
-        //2.) GET closest match from the server and then pop modal
 
+        //validate the survey form
         function checkSurvey(){
             //validate the survey
             var valid = true;
@@ -300,7 +317,8 @@
                 }
             }
             if(!valid){
-                //pop a modal to say all fields are required/////////////////////////////////////////////
+                //pop an alert if any of the fields is empty
+                alert("Answering all questions is mandatory.");
             }
             return valid
         }
@@ -324,16 +342,17 @@
                         $('input[name=q10]:checked').attr("id").split("-")[1]
                     ]
                 };
+                addSurveyToData(newSurvey);
             }
-            addSurveyToData(newSurvey);
         });
         
         function addSurveyToData(newIndividual){
             $.post("/api/individuals", newIndividual)
                .then(function (data, status, response) {
-                   debugger;
                    if (status === "success") {
-                       console.log("Best match: " + data);
+                        $("#matchImage").attr("src", data.photo);
+                        $("#matchName").text(data.name);
+                        $("#bestMatchModal").modal('show');
                    }
             });
         }

@@ -18,7 +18,6 @@ module.exports = function(app){
 };
 
 function findMatch(newUser){
-    console.log("newUser: " + newUser);
     var bestMatchScore = 0;
     var bestMatchIndex = 0;
     //loop through all the individuals except the NEW one in the end to compare survey answers
@@ -33,6 +32,5 @@ function findMatch(newUser){
         }
     }
     returnMatch = individuals[bestMatchIndex];
-    console.log(returnMatch);
     return returnMatch;
 }
