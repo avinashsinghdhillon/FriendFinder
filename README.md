@@ -12,6 +12,6 @@ Friend Finder matches the user to others based on their answers to multiple ques
 
 ### Technologies Used:
     * Node.js
-    * Express (NPM)
+    * Express
     * Path (NPM)
     * API routing
